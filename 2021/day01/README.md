@@ -1,3 +1,5 @@
+# Sonar Sweep
+
 ## Part One
 
 You're minding your own business on a ship at sea when the overboard alarm goes off! You rush to see if you can help. Apparently, one of the Elves tripped and accidentally sent the sleigh keys flying into the ocean!
@@ -23,31 +25,6 @@ For example, suppose you had the following report:
     260
     263
     
-
-## Part Two	
-
-This report indicates that, scanning outward from the submarine, the sonar sweep found depths of `199`, `200`, `208`, `210`, and so on.
-
-The first order of business is to figure out how quickly the depth increases, just so you know what you're dealing with - you never know if the keys will get carried into deeper water by an ocean current or a fish or something.
-
-To do this, count _the number of times a depth measurement increases_ from the previous measurement. (There is no measurement before the first measurement.) In the example above, the changes are as follows:
-
-<pre><code>199 (N/A - no previous measurement)
-200 (<em>increased</em>)
-208 (<em>increased</em>)
-210 (<em>increased</em>)
-200 (decreased)
-207 (<em>increased</em>)
-240 (<em>increased</em>)
-269 (<em>increased</em>)
-260 (decreased)
-263 (<em>increased</em>)
-</code></pre>
-
-In this example, there are _`7`_ measurements that are larger than the previous measurement.
-
-_How many measurements are larger than the previous measurement?_
-
 -----------------
 
 ## --- Part Two ---
