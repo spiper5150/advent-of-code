@@ -16,36 +16,42 @@ def get_rating(data, binary, col, common):
         return binary
 
 
-def get_common(array, tie):
+def get_common(array, get_max, tie):
     ones = 0
     zeros = 0
 
     for x in array:
         if(int(x) == 1):
             ones += 1
-        elif(int(x) == 0):
+        else:
             zeros += 1
 
-    if(ones > zeros):
-        return 1
+    if(ones == zeros):
+        return tie
 
-    if(ones < zeros):
-        return 0
+    if(get_max == True):
+        return 1 if ones > zeros else 0
+    else:
+        return 1 if ones < zeros else 0
 
-    return tie
+
+def get_bit_array(array, col):
+    bit_array = []
+    for x in array:
+        bits = list(x)
+        bit_array.append(bits[col])
+    return bit_array
 
 
 def solution(data):
     oxy_rating = data
     co2_rating = data
     for col in range(len(data[0])):
-        bitArray = []
-        for binary in data:
-            bits = list(binary)
-            bitArray.append(bits[col])
+        oxyBitArray = get_bit_array(oxy_rating, col)
+        co2BitArray = get_bit_array(co2_rating, col)
 
-        epsilon = str(get_common(bitArray, 1))
-        gamma = str(get_common(bitArray, 0))
+        epsilon = str(get_common(oxyBitArray, True, 1))
+        gamma = str(get_common(co2BitArray, False, 0))
 
         oxy_rating = filter(lambda val: get_rating(
             oxy_rating, val, col, epsilon), oxy_rating)
@@ -57,4 +63,4 @@ def solution(data):
 
 
 print('Test: ', solution(get_test_data()))
-# print('Answer: ', solution(get_data()))
+print('Answer: ', solution(get_data()))
